@@ -2,6 +2,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 
 import { SET_CURRENT_USER, SET_ERRORS } from "./actionTypes";
+import { fetchAllChannels } from "./channels";
 
 export const checkForExpiredToken = () => {
   return dispatch => {
@@ -74,7 +75,7 @@ const setCurrentUser = token => {
       localStorage.setItem("token", token);
       axios.defaults.headers.common.Authorization = `jwt ${token}`;
       user = jwt_decode(token);
-      //dispatch(fetchAllChannels());
+      dispatch(fetchAllChannels());
     } else {
       localStorage.removeItem("token");
       delete axios.defaults.headers.common.Authorization;
