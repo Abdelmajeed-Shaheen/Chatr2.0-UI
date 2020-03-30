@@ -29,6 +29,7 @@ class SendForm extends Component {
       const messages = channel.map(messageObject => (
         <Message
           key={`${messageObject.message} ${messageObject.id} ${messageObject.timestamp}`}
+          user={this.props.user.username}
           messageObject={messageObject}
         />
       ));
@@ -73,7 +74,7 @@ class SendForm extends Component {
   }
 }
 const mapStateToProps = state => ({
-  user: state.userState,
+  user: state.userState.user,
   openedChannel: state.channelsState.openedChannel,
   channels: state.channelsState.channels
 });

@@ -8,14 +8,38 @@ import React from "react";
 const Message = props => {
   return (
     <li>
-      <div className="card mt-2" style={{ width: "400px" }}>
-        <div className="card-header text-danger">
-          {props.messageObject.username}
-        </div>
-        <div className="card-body">
-          <blockquote className="blockquote mb-0">
-            <p>{props.messageObject.message}</p>
-          </blockquote>
+      <div
+        className={
+          props.user !== props.messageObject.username
+            ? "speech-bubble-ds"
+            : "speech-bubble-ds-owner"
+        }
+      >
+        <div
+          className="card"
+          style={{
+            backgroundColor: "transparent",
+            borderBlockColor: "transparent"
+          }}
+        >
+          <div
+            className="card-header"
+            style={{ fontSize: "15px", color: "white" }}
+          >
+            <b>{props.messageObject.username}</b>
+          </div>
+          <div className="card-body">
+            <blockquote className="blockquote mb-0">
+              <p>{props.messageObject.message}</p>
+            </blockquote>
+          </div>
+          <div
+            className={
+              props.user !== props.messageObject.username
+                ? "speech-bubble-ds-arrow"
+                : "speech-bubble-ds-arrow-owner"
+            }
+          ></div>
         </div>
       </div>
     </li>

@@ -13,7 +13,7 @@ const NavBar = props => {
       id="mainNav"
     >
       <Link className="navbar-brand" to="/welcome">
-        Chatr2.0
+        <h4 style={{ fontFamily: "Droid Arabic Kufi" }}>سواليف </h4>
       </Link>
       <button
         className="navbar-toggler navbar-toggler-right"
