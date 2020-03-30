@@ -1,5 +1,10 @@
 import axios from "axios";
-import { FETCH_CHANNELS, ADD_CHANNEL, SET_ERRORS } from "./actionTypes";
+import {
+  FETCH_CHANNELS,
+  ADD_CHANNEL,
+  SET_ERRORS,
+  FETCH_CHANNEL
+} from "./actionTypes";
 
 import { setErrors } from "./errors";
 export const fetchAllChannels = () => {
@@ -37,6 +42,23 @@ export const addChannel = (channel, history) => {
         type: SET_ERRORS,
         payload: error
       });
+    }
+  };
+};
+
+export const fetchChannel = channelID => {
+  return async dispatch => {
+    try {
+      const res = await axios.get(
+        `https://api-chatr.herokuapp.com/channels/${channelID}`
+      );
+      const channel = res.data;
+      dispatch({
+        type: FETCH_CHANNEL,
+        payload: channel
+      });
+    } catch (error) {
+      console.error(error);
     }
   };
 };

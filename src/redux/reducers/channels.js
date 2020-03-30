@@ -1,4 +1,8 @@
-import { FETCH_CHANNELS, ADD_CHANNEL } from "../actions/actionTypes";
+import {
+  FETCH_CHANNELS,
+  ADD_CHANNEL,
+  FETCH_CHANNEL
+} from "../actions/actionTypes";
 
 const initialState = {
   channels: [],
@@ -17,6 +21,11 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         channels: [payload, ...state.channels]
+      };
+    case FETCH_CHANNEL:
+      return {
+        ...state,
+        openedChannel: payload
       };
     default:
       return state;
