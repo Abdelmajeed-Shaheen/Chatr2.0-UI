@@ -3,7 +3,8 @@ import {
   FETCH_CHANNELS,
   ADD_CHANNEL,
   SET_ERRORS,
-  FETCH_CHANNEL
+  FETCH_CHANNEL,
+  SEND_MESSAGE
 } from "./actionTypes";
 
 import { setErrors } from "./errors";
@@ -63,6 +64,29 @@ export const fetchChannel = channelID => {
       });
     } catch (error) {
       console.error(error);
+    }
+  };
+};
+
+export const sendMsg = (msg, channelID, user) => {
+  return async dispatch => {
+    try {
+      const message = {
+        username: user,
+        message: msg,
+        timestamp: new Date(),
+        channel: channelID
+      };
+      const res = await axios.post(
+        `https://api-chatr.herokuapp.com/channels/${channelID}/send/`,
+        message
+      );
+      dispatch({
+        type: SEND_MESSAGE,
+        payload: res.data
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
 };

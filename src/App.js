@@ -36,7 +36,7 @@ class App extends Component {
           <Route path="/create/channel" component={AddChannel} />
 
           {/* NO CHEATING - change this back to a channel name - better UX */}
-          <Route path="/channels/:channelID" component={ChannelPage} />
+          <Route path="/channels/:name/:channelID" component={ChannelPage} />
 
           <Redirect to="/welcome" />
         </Switch>
