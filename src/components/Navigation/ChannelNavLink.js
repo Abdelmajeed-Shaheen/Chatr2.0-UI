@@ -13,8 +13,20 @@ const ChannelNavLink = ({ channel }) => (
     title={channel.name}
   >
     <NavLink className="nav-link" to={`/channels/${channel.name}`}>
-      <FontAwesomeIcon icon={faHashtag} />
-      <span className="nav-link-text"> {channel.name}</span>
+      <img
+        src={
+          channel.image_url
+            ? channel.image_url
+            : "https://www.pngfind.com/pngs/m/403-4038340_koren-hosnell-profile-icon-white-png-transparent-png.png"
+        }
+        className="rounded-circle"
+        alt=""
+        style={{ height: "30px", width: "30px" }}
+      />
+      <span className="nav-link-text" style={{ fontSize: "16px" }}>
+        {" "}
+        {channel.name}
+      </span>
     </NavLink>
   </li>
 );
