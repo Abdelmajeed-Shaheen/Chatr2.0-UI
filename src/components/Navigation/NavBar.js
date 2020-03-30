@@ -37,7 +37,7 @@ const NavBar = props => {
 };
 
 const mapStateToProps = state => ({
-  user: state.user.user
+  user: state.userState.user
 });
 
 export default connect(mapStateToProps)(NavBar);

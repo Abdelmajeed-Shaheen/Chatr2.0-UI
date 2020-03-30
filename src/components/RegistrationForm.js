@@ -50,13 +50,14 @@ class RegistationForm extends Component {
                       placeholder="Password"
                       onChange={this.changeHandler}
                     />
-                    {/*
-                     * You should wrap the <p> tag in the condition, not just the text
-                     */}
-                    <p style={{ color: "red" }}>
-                      {/* Why is this should errors for username? */}
-                      {this.props.errors ? this.props.errors.username : ""}
-                    </p>
+
+                    {this.props.errors ? (
+                      <p style={{ color: "red" }}>
+                        {this.props.errors.username}
+                      </p>
+                    ) : (
+                      ""
+                    )}
                   </div>
 
                   <button type="submit" className="btn btn-primary">
@@ -78,8 +79,8 @@ class RegistationForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user.user,
-    errors: state.errors
+    user: state.userState.user,
+    errors: state.errorsState
   };
 };
 

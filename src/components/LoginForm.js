@@ -3,11 +3,6 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../redux/actions";
 
-/**
- * This component is almost identical to `RegistrationForm`
- * Combine them
- */
-
 class Login extends Component {
   state = {
     username: "",
@@ -83,8 +78,8 @@ class Login extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user.user,
-    errors: state.errors
+    user: state.userState.user,
+    errors: state.errorsState
   };
 };
 

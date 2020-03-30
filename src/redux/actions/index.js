@@ -5,6 +5,6 @@ export { setErrors } from "./errors";
 export {
   fetchAllChannels,
   addChannel,
-  fetchChannel,
+  fetchMessages,
   sendMsg
 } from "./channels";

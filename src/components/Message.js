@@ -5,7 +5,7 @@ import React from "react";
  * so why is it called `MessageS` (plural) ?
  */
 
-const Messages = props => {
+const Message = props => {
   return (
     <li>
       <div className="card mt-2" style={{ width: "400px" }}>
@@ -21,4 +21,4 @@ const Messages = props => {
     </li>
   );
 };
-export default Messages;
+export default Message;
