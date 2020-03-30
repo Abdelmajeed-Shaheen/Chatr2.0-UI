@@ -263,10 +263,12 @@ body.fixed-nav {
 #mainNav.fixed-top .sidenav-toggler {
   display: none;
 }
-
+/* added the scroll */
 @media (min-width: 992px) {
   #mainNav.fixed-top .navbar-sidenav {
     height: calc(100vh - 112px);
+    overflow-y: scroll;
+    overflow: hidden;
   }
   #mainNav.fixed-top .sidenav-toggler {
     position: absolute;
