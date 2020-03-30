@@ -9,13 +9,13 @@ class ChannelPage extends Component {
    * Make a separate component for the message form
    */
 
-  // state = {
-  //   message: "",
-  //   show: false
-  // };
-  // changeHandler = event => {
-  //   this.setState({ [event.target.name]: event.target.value });
-  // };
+  state = {
+    message: "",
+    show: false
+  };
+  changeHandler = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   /**
    * There's some repetition between `componentDidMount` and `componentDidUpdate`
