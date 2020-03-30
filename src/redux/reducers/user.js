@@ -2,7 +2,7 @@ import { SET_CURRENT_USER, SET_ERRORS } from "../actions/actionTypes";
 
 const initialState = {
   user: null,
-  errors: null
+  errors: null // <--- I would prefer this was in the errors reducer rather than here - I don't even think you're using this
 };
 
 const reducer = (state = initialState, { type, payload }) => {

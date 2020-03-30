@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * This component shows a single message
+ * so why is it called `MessageS` (plural) ?
+ */
+
 const Messages = props => {
   return (
     <li>

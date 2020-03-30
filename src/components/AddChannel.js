@@ -3,6 +3,11 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../redux/actions";
 
+/**
+ * Does this really need to be a WHOLE new page?
+ * Why not open a modal?
+ * Or put the form directly in the sidebar?
+ */
 class AddChannel extends Component {
   state = {
     name: "",
