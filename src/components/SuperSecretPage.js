@@ -9,7 +9,7 @@ const SuperSecretPage = ({ user }) => {
     <div className="bg text-center ">
       <h1
         className="text-black pt-5"
-        style={{ fontFamily: "Calligraffitti", fontSize: 100 }}
+        style={{ fontFamily: "Calligraffitti", fontSize: "100px" }}
       >
         Welcome {user.username}!
       </h1>

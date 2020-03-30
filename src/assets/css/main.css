@@ -4,6 +4,13 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.channel {
+  padding-top: 2em;
+  overflow-y: scroll;
+  height: 65vh;
+  background-color: #212529;
+}
 html {
   position: relative;
   min-height: 100%;
