@@ -6,10 +6,10 @@ const SuperSecretPage = ({ user }) => {
   if (!user) return <Redirect to="/login" />;
 
   return (
-    <div className="text-center ">
+    <div className="bg text-center ">
       <h1
-        className="my-5 text-black"
-        style={{ fontFamily: "Comic Sans MS", fontSize: 100 }}
+        className="text-black pt-5"
+        style={{ fontFamily: "Calligraffitti", fontSize: 100 }}
       >
         Welcome {user.username}!
       </h1>

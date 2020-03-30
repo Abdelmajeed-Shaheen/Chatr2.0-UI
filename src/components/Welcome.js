@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 const Welcome = ({ user }) => {
   if (user) return <Redirect to="/private" />;
   return (
-    <header className="masthead">
-      <div className=" container text-center mt-5">
+    <header className="bg masthead">
+      <div className=" container text-center">
         <h1
           className="mb-1 text-dark"
           style={{ fontFamily: "Comic Sans MS", fontSize: 100 }}

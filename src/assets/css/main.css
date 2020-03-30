@@ -1,7 +1,6 @@
 .bg {
   background-image: url("https://www.glutenfreegrainfree.com.au/wp-content/uploads/2015/08/Website-Flesh-Background-Paper-Crinkle.jpg");
   height: 100vh;
-  background-position: fill;
   background-repeat: no-repeat;
   background-size: cover;
 }
