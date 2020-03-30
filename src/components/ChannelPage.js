@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Messages from "./Messages";
-import { fetchChannel } from "../redux/actions";
+import { fetchChannel, sendMsg } from "../redux/actions";
 
 class ChannelPage extends Component {
   state = {
@@ -36,8 +36,21 @@ class ChannelPage extends Component {
     clearInterval(this.interval);
   }
 
+  handleSubmit = event => {
+    event.preventDefault();
+
+    this.state.message &&
+      this.props.sendMsg(
+        this.state.message,
+        this.props.match.params.channelID,
+        this.props.user.username
+      );
+    this.setState({ message: "" });
+  };
+
   render() {
     const channel = this.props.openedChannel;
+    console.log(channel);
     if (channel) {
       const messages = channel.map(messageObject => (
         <Messages
@@ -46,15 +59,39 @@ class ChannelPage extends Component {
         />
       ));
       return (
-        <div className="channel">
-          <ul>
-            {messages.length > 0 ? (
-              messages
-            ) : (
-              <h3 style={{ color: "white" }}>No messages yet</h3>
-            )}
-          </ul>
-        </div>
+        <>
+          <div className="channel">
+            <ul>
+              {messages.length > 0 ? (
+                messages
+              ) : (
+                <h3 style={{ color: "white" }}>No messages yet</h3>
+              )}
+            </ul>
+          </div>
+          <div style={{ backgroundColor: "grey", height: "20vh" }}>
+            <form onSubmit={this.handleSubmit}>
+              <div className=" col-12 ">
+                <textarea
+                  className=" col-9 rounded mt-2"
+                  name="message"
+                  placeholder={`Message ${this.props.match.params.name}`}
+                  onChange={this.changeHandler}
+                  value={this.state.message}
+                  rows="4"
+                  style={{ resize: "none" }}
+                ></textarea>
+                <div className=" btn">
+                  <input
+                    className=" btn btn-success btn-block "
+                    type="submit"
+                    value="Send"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+        </>
       );
     } else {
       return <div> Not Found </div>;
@@ -68,7 +105,8 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => {
   return {
-    fetchChannel: channelID => dispatch(fetchChannel(channelID))
+    fetchChannel: channelID => dispatch(fetchChannel(channelID)),
+    sendMsg: (msg, channelID, user) => dispatch(sendMsg(msg, channelID, user))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ChannelPage);

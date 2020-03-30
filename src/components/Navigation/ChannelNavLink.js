@@ -8,7 +8,10 @@ const ChannelNavLink = ({ channel }) => (
     data-placement="right"
     title={channel.name}
   >
-    <NavLink className="nav-link" to={`/channels/${channel.id}`}>
+    <NavLink
+      className="nav-link"
+      to={`/channels/${channel.name}/${channel.id}`}
+    >
       <img
         src={
           channel.image_url
