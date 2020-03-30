@@ -47,6 +47,10 @@ export const addChannel = (channel, history) => {
   };
 };
 
+/**
+ * Is this fetching a "channel"?
+ * Looks like it's fetching messages
+ */
 export const fetchChannel = channelID => {
   return async dispatch => {
     try {

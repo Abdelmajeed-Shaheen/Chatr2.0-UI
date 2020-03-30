@@ -4,13 +4,26 @@ import Messages from "./Messages";
 import { fetchChannel, sendMsg } from "../redux/actions";
 
 class ChannelPage extends Component {
-  state = {
-    message: "",
-    show: false
-  };
-  changeHandler = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
+  /**
+   * This state management shouldn't be here
+   * Make a separate component for the message form
+   */
+
+  // state = {
+  //   message: "",
+  //   show: false
+  // };
+  // changeHandler = event => {
+  //   this.setState({ [event.target.name]: event.target.value });
+  // };
+
+  /**
+   * There's some repetition between `componentDidMount` and `componentDidUpdate`
+   *
+   * How about a method like:
+   *
+   * `setFetchMessagesInterval` ?
+   */
 
   componentDidMount() {
     const channelID = this.props.match.params.channelID;
@@ -25,7 +38,7 @@ class ChannelPage extends Component {
     const channelID = this.props.match.params.channelID;
     if (prevProps.match.params.channelID !== channelID) {
       this.props.fetchChannel(channelID);
-      clearInterval(this.interval);
+      clearInterval(this.interval); // <-- clear first THEN re-fetch
       this.interval = setInterval(() => {
         this.props.fetchChannel(this.props.match.params.channelID);
       }, 500);

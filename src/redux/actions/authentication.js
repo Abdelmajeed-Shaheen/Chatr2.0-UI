@@ -29,6 +29,9 @@ export const checkForExpiredToken = () => {
 export const login = (userData, history) => {
   return async dispatch => {
     try {
+      /**
+       * Why aren't you using the `instance`?
+       */
       const res = await axios.post(
         "https://api-chatr.herokuapp.com/login/",
         userData
@@ -37,6 +40,10 @@ export const login = (userData, history) => {
       dispatch(setCurrentUser(user.token));
       history.replace("/private");
     } catch (err) {
+      /**
+       * You should import and use the `setErrors` function
+       * instead of manually dispatching
+       */
       dispatch({
         type: SET_ERRORS,
         payload: err.response.data
