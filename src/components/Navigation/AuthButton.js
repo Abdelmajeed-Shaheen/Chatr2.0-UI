@@ -42,7 +42,7 @@ const AuthButton = ({ user, logout }) => {
 };
 
 const mapStateToProps = state => ({
-  user: state.user.user
+  user: state.userState.user
 });
 
 const mapDispatchToProps = dispatch => {

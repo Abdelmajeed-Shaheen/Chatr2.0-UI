@@ -80,8 +80,8 @@ class AddChannel extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user.user,
-    errors: state.errors
+    user: state.userState.user,
+    errors: state.errorsState
   };
 };
 

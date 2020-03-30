@@ -18,7 +18,6 @@ class App extends Component {
   componentDidMount() {
     main();
   }
-  // commented by tala test1 <--- don't leave "dead" comments in master
   render() {
     return (
       <div className="content-wrapper">
@@ -27,17 +26,9 @@ class App extends Component {
           <Route path="/welcome" component={Welcome} />
           <Route path="/login" component={LoginForm} />
           <Route path="/signup" component={RegistrationForm} />
-
-          {/* You can get rid of this. It was just there
-           * to test your login. You should be redirecting the user
-           * somewhere more useful. First channel in the list? */}
           <Route path="/private" component={SuperSecretPage} />
-
           <Route path="/create/channel" component={AddChannel} />
-
-          {/* NO CHEATING - change this back to a channel name - better UX */}
           <Route path="/channels/:name/:channelID" component={ChannelPage} />
-
           <Redirect to="/welcome" />
         </Switch>
         <Footer />

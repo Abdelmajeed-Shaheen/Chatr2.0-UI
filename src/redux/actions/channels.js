@@ -51,7 +51,7 @@ export const addChannel = (channel, history) => {
  * Is this fetching a "channel"?
  * Looks like it's fetching messages
  */
-export const fetchChannel = channelID => {
+export const fetchMessages = channelID => {
   return async dispatch => {
     try {
       const res = await axios.get(

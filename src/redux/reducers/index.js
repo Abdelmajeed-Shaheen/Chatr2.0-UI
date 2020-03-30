@@ -6,7 +6,7 @@ import errorReducer from "./errors";
 import channelReducer from "./channels";
 
 export default combineReducers({
-  user: userReducer,
-  errors: errorReducer,
-  channels: channelReducer
+  userState: userReducer,
+  errorsState: errorReducer,
+  channelsState: channelReducer
 });

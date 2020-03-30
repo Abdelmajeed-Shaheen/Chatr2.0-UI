@@ -1,6 +1,7 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
+import instance from "./instance";
 import { SET_CURRENT_USER, SET_ERRORS } from "./actionTypes";
 import { fetchAllChannels } from "./channels";
 
@@ -29,21 +30,11 @@ export const checkForExpiredToken = () => {
 export const login = (userData, history) => {
   return async dispatch => {
     try {
-      /**
-       * Why aren't you using the `instance`?
-       */
-      const res = await axios.post(
-        "https://api-chatr.herokuapp.com/login/",
-        userData
-      );
+      const res = await instance.post("login/", userData);
       const user = res.data;
       dispatch(setCurrentUser(user.token));
       history.replace("/private");
     } catch (err) {
-      /**
-       * You should import and use the `setErrors` function
-       * instead of manually dispatching
-       */
       dispatch({
         type: SET_ERRORS,
         payload: err.response.data
@@ -55,10 +46,7 @@ export const login = (userData, history) => {
 export const signup = (userData, history) => {
   return async dispatch => {
     try {
-      const res = await axios.post(
-        "https://api-chatr.herokuapp.com/signup/",
-        userData
-      );
+      const res = await instance.post("signup/", userData);
       const user = res.data;
       dispatch(setCurrentUser(user.token));
       history.replace("/private");
