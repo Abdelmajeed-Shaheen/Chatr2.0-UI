@@ -5,29 +5,50 @@ import { connect } from "react-redux";
 const Welcome = ({ user }) => {
   if (user) return <Redirect to="/private" />;
   return (
-    <header className="bg masthead">
-      <div className=" container text-center">
+    <div className="bg text-center">
+      <div
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.5)  ",
+          height: "85vh"
+        }}
+      >
         <h1
-          className="mb-1 text-dark"
-          style={{ fontFamily: "Comic Sans MS", fontSize: 100 }}
+          className="mb-1"
+          style={{
+            fontFamily: "Comic Sans MS",
+            fontSize: 100,
+            color: "#1a237e",
+            fontWeight: "1000"
+          }}
         >
-          WELCOME TO CHATR
+          WELCOME TO
         </h1>
-        <h3
-          className="mb-2 text-dark"
-          style={{ fontFamily: "Franklin Gothic Medium" }}
+        <h1
+          className="mb-1"
+          style={{
+            fontSize: 100,
+            color: "#1a237e",
+
+            fontFamily: "Droid Arabic Kufi"
+          }}
         >
-          <em>You're gonna need to login to see the messages</em>
-        </h3>
+          سواليف
+        </h1>
+
         <Link
           to="/login"
-          className="btn btn-outline-primary btn-lg"
-          style={{ fontFamily: "Comic Sans MS" }}
+          className="btn btn-primary btn-lg"
+          style={{
+            fontFamily: "Comic Sans MS",
+            backgroundColor: "#ffd600 ",
+            borderColor: "#1a237e",
+            color: "#1a237e"
+          }}
         >
           Login
         </Link>
       </div>
-    </header>
+    </div>
   );
 };
 

@@ -19,7 +19,7 @@ const Message = props => {
           className="card"
           style={{
             backgroundColor: "transparent",
-            borderBlockColor: "transparent"
+            borderColor: "transparent"
           }}
         >
           <div

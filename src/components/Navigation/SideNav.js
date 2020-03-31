@@ -50,7 +50,10 @@ class SideNav extends React.Component {
             </li>
           )}
         </ul>
-        <ul className="navbar-nav sidenav-toggler">
+        <ul
+          className="navbar-nav sidenav-toggler"
+          style={{ backgroundColor: "#1c2331" }}
+        >
           <li className="nav-item">
             <span
               className="nav-link text-center"

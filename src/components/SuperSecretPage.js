@@ -7,16 +7,24 @@ const SuperSecretPage = ({ user }) => {
 
   return (
     <div className="bg text-center ">
-      <h1
-        className="text-black pt-5"
+      <div
         style={{
-          fontFamily: "Calligraffitti",
-          fontSize: "100px",
-          color: "#000080"
+          backgroundColor: "rgba(255, 255, 255, 0.5)  ",
+          height: "85vh"
         }}
       >
-        Welcome {user.username}!
-      </h1>
+        <h1
+          className="text-black pt-5"
+          style={{
+            fontFamily: "Calligraffitti",
+            fontSize: "100px",
+            color: "#1a237e  ",
+            fontWeight: "1000"
+          }}
+        >
+          Welcome {user.username}!
+        </h1>
+      </div>
     </div>
   );
 };

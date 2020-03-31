@@ -116,7 +116,7 @@
 }
 
 .bg {
-  background-image: url("https://www.glutenfreegrainfree.com.au/wp-content/uploads/2015/08/Website-Flesh-Background-Paper-Crinkle.jpg");
+  background-image: url("../images/bubble.jpg");
   height: 85vh;
   background-repeat: no-repeat;
   background-size: cover;
@@ -126,7 +126,7 @@
   padding-top: 2em;
   overflow-y: scroll;
   height: 65vh;
-  background-color: #212529;
+  background-color: #546e7a;
 }
 html {
   position: relative;
@@ -172,7 +172,7 @@ body.fixed-nav {
 }
 
 .scroll-to-top:hover {
-  background: #343a40;
+  background: #1c2331;
 }
 
 .scroll-to-top i {
@@ -623,7 +623,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 
 @media (min-width: 992px) {
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav {
-    background: #343a40;
+    background: #1c2331;
   }
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
     color: white !important;
@@ -643,7 +643,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     .navbar-sidenav
     > .nav-item
     .sidenav-third-level {
-    background: #343a40;
+    background: #1c2331;
   }
 }
 

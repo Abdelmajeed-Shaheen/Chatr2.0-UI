@@ -7,7 +7,6 @@ import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 import {
   faSmileBeam,
-  faArrowDown,
   faArrowAltCircleDown
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -57,10 +56,7 @@ class SendForm extends Component {
       return (
         <>
           <div className="channel" id="divscroll">
-            <h4 style={{ color: "red", fontSize: "15px" }} className=" ml-2">
-              By {this.props.owner.owner}
-            </h4>
-            <ul>
+            <ul style={{ listStyle: "none" }}>
               {messages.length > 0 ? (
                 messages
               ) : (
@@ -69,28 +65,32 @@ class SendForm extends Component {
             </ul>
           </div>
 
-          <div style={{ backgroundColor: "gray", height: "20vh" }}>
+          <div style={{ backgroundColor: "#546e7a", height: "20vh" }}>
             <form className="form-inline" onSubmit={this.handleSubmit}>
               <textarea
                 className=" col-9 rounded mt-2"
                 name="message"
-                placeholder={`Message ${this.props.name}`}
+                placeholder={`Message ${this.props.name} - Created By ${this.props.owner.owner}`}
                 onChange={this.changeHandler}
                 value={this.state.message}
-                rows="4"
-                style={{ resize: "none", margin: "20px" }}
+                rows="5"
+                style={{ resize: "none" }}
               ></textarea>
               <div>
-                <div className="row ml-2">
+                <div className="row ml-1">
                   <div className=" btn">
                     <input
                       className=" btn btn-success btn-block "
                       type="submit"
                       value="Send"
+                      style={{
+                        backgroundColor: "#1c2331",
+                        borderColor: "#1c2331"
+                      }}
                     />
                   </div>
                 </div>
-                <div className="row ml-2">
+                <div className="row ml-4">
                   <FontAwesomeIcon
                     icon={faSmileBeam}
                     onClick={() =>
@@ -107,7 +107,9 @@ class SendForm extends Component {
                     zIndex: 9,
                     top: "80px",
                     right: "50px",
-                    color: "white"
+                    color: "white",
+                    height: "30px",
+                    width: "30px"
                   }}
                 />
                 <div

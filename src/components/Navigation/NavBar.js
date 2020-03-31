@@ -9,8 +9,9 @@ import AuthButton from "./AuthButton";
 const NavBar = props => {
   return (
     <nav
-      className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nav-nav"
+      className="navbar navbar-expand-lg navbar-dark fixed-top nav-nav"
       id="mainNav"
+      style={{ backgroundColor: "#1c2331" }}
     >
       <Link className="navbar-brand" to="/welcome">
         <h4 style={{ fontFamily: "Droid Arabic Kufi" }}>سواليف </h4>
