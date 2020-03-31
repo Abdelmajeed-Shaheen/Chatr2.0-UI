@@ -24,14 +24,28 @@ const Message = props => {
         >
           <div
             className="card-header"
-            style={{ fontSize: "15px", color: "white" }}
+            style={{
+              fontSize: "15px",
+              color: "white",
+              backgroundColor: "transparent",
+              borderBlockColor: "transparent"
+            }}
           >
             <b>{props.messageObject.username}</b>
           </div>
           <div className="card-body">
-            <blockquote className="blockquote mb-0">
-              <p>{props.messageObject.message}</p>
-            </blockquote>
+            {props.messageObject.message.includes("https://") ||
+            props.messageObject.message.includes("http://") ? (
+              <img
+                src={props.messageObject.message}
+                alt={props.messageObject.username}
+                style={{ width: "250px", height: "250px" }}
+              />
+            ) : (
+              <blockquote className="blockquote ">
+                <p>{props.messageObject.message}</p>
+              </blockquote>
+            )}
           </div>
           <div
             className={

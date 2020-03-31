@@ -36,6 +36,9 @@ class SendForm extends Component {
       return (
         <>
           <div className="channel">
+            <h4 style={{ color: "red", fontSize: "15px" }} className=" ml-2">
+              By {this.props.owner.owner}
+            </h4>
             <ul>
               {messages.length > 0 ? (
                 messages

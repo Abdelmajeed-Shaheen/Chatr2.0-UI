@@ -30,8 +30,12 @@ class ChannelPage extends Component {
   }
 
   render() {
+    const owner = this.props.channels.find(
+      channel => channel.name === this.props.match.params.name
+    );
     return (
       <SendForm
+        owner={owner}
         name={this.props.match.params.name}
         channelID={this.props.match.params.channelID}
       />
