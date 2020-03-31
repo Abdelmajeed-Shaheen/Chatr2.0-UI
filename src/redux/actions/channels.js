@@ -68,6 +68,7 @@ export const fetchMessages = channelID => {
   };
 };
 
+// I'd recommend you rename this to sendMessage for readability.
 export const sendMsg = (msg, channelID, user) => {
   return async dispatch => {
     try {

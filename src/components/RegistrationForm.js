@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actionCreators from "../redux/actions";
+import * as actionCreators from "../redux/actions"; // <-- Doesn't need to import *, you're only using a single action here.
+
 class RegistationForm extends Component {
   state = {
     username: "",

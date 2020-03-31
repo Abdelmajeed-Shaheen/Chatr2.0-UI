@@ -31,7 +31,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case SEND_MESSAGE:
       return {
         ...state,
-        openedChannel: state.openedChannel.concat(payload)
+        openedChannel: state.openedChannel.concat(payload) // Do you know of a prettier syntax for this? :D
       };
     default:
       return state;

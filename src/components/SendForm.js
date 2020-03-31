@@ -44,6 +44,10 @@ class SendForm extends Component {
 
   render() {
     const channel = this.props.openedChannel;
+    /*
+     * You should reverse the if-statement and remove the else.
+     * This'll shorten and simplify the code a bit.
+     */
     if (channel) {
       const messages = channel.map(messageObject => (
         <Message
