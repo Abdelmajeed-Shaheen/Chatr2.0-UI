@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actionCreators from "../redux/actions"; // <-- Doesn't need to import *, you're only using a single action here.
+import { signup } from "../redux/actions";
 
 class RegistationForm extends Component {
   state = {
@@ -87,8 +87,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signup: (userData, history) =>
-      dispatch(actionCreators.signup(userData, history))
+    signup: (userData, history) => dispatch(signup(userData, history))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(RegistationForm);

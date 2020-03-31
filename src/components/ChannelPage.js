@@ -42,17 +42,10 @@ class ChannelPage extends Component {
   }
 
   render() {
-    const owner = this.props.channels.find(
+    const channel = this.props.channels.find(
       channel => channel.name === this.props.match.params.name
     );
-    /*
-     * owner here is the channel object,
-     * do you need to pass it along with two other props
-     * to SendForm?
-     *
-     * also, why is it called owner? it's a channel object.
-     * maybe call it "channel"?
-     */
+    const owner = channel ? channel.owner : "";
     return (
       <SendForm
         owner={owner}

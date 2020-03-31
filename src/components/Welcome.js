@@ -53,7 +53,7 @@ const Welcome = ({ user }) => {
 };
 
 const mapStateToProps = state => ({
-  user: state.userState.user // <-- is there a way to restructure your reducers so you can avoid `user.user` :/
+  user: state.userState.user
 });
 
 export default connect(mapStateToProps)(Welcome);

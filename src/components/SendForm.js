@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Message from "./Message";
-import { sendMsg } from "../redux/actions";
+import { sendMessage } from "../redux/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
@@ -33,21 +33,16 @@ class SendForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.state.message &&
-      this.props.sendMsg(
+      this.props.sendMessage(
         this.state.message,
         this.props.channelID,
         this.props.user.username
       );
     this.setState({ message: "" });
-    setTimeout(() => this.scrollToBottom(), 500);
   };
 
   render() {
     const channel = this.props.openedChannel;
-    /*
-     * You should reverse the if-statement and remove the else.
-     * This'll shorten and simplify the code a bit.
-     */
     if (channel) {
       const messages = channel.map(messageObject => (
         <Message
@@ -74,7 +69,7 @@ class SendForm extends Component {
               <textarea
                 className=" col-9 rounded mt-2"
                 name="message"
-                placeholder={`Message ${this.props.name} - Created By ${this.props.owner.owner}`}
+                placeholder={`Message ${this.props.name} - Created By ${this.props.owner}`}
                 onChange={this.changeHandler}
                 value={this.state.message}
                 rows="5"
@@ -148,7 +143,8 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => {
   return {
-    sendMsg: (msg, channelID, user) => dispatch(sendMsg(msg, channelID, user))
+    sendMessage: (msg, channelID, user) =>
+      dispatch(sendMessage(msg, channelID, user))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SendForm);
