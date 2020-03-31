@@ -2,10 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Message from "./Message";
 import { sendMsg } from "../redux/actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "emoji-mart/css/emoji-mart.css";
+import { Picker } from "emoji-mart";
+import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 class SendForm extends Component {
   state = {
-    message: ""
+    message: "",
+    showemoji: false
+  };
+
+  addEmoji = e => {
+    this.setState({ message: this.state.message + ` ${e.native}` });
   };
 
   changeHandler = event => {
@@ -47,9 +56,10 @@ class SendForm extends Component {
               )}
             </ul>
           </div>
+
           <div style={{ backgroundColor: "grey", height: "20vh" }}>
             <form onSubmit={this.handleSubmit}>
-              <div className=" col-12 ">
+              <div className=" col-9 ">
                 <textarea
                   className=" col-9 rounded mt-2"
                   name="message"
@@ -66,6 +76,27 @@ class SendForm extends Component {
                     value="Send"
                   />
                 </div>
+                <FontAwesomeIcon
+                  icon={faUserPlus}
+                  onClick={() =>
+                    this.setState({ showemoji: !this.state.showemoji })
+                  }
+                />
+              </div>
+              <div
+                style={{
+                  float: "left",
+                  position: "absolute",
+                  zIndex: 9,
+                  top: "250px",
+                  right: "10px"
+                }}
+              >
+                {this.state.showemoji ? (
+                  <Picker onSelect={this.addEmoji} />
+                ) : (
+                  ""
+                )}
               </div>
             </form>
           </div>
