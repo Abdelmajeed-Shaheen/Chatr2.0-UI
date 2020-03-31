@@ -5,7 +5,11 @@ import { sendMsg } from "../redux/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSmileBeam,
+  faArrowDown,
+  faArrowAltCircleDown
+} from "@fortawesome/free-solid-svg-icons";
 
 class SendForm extends Component {
   state = {
@@ -13,6 +17,12 @@ class SendForm extends Component {
     showemoji: false
   };
 
+  scrollToBottom() {
+    var objDiv = document.getElementById("divscroll");
+    if (objDiv) {
+      objDiv.scrollTop = objDiv.scrollHeight;
+    }
+  }
   addEmoji = e => {
     this.setState({ message: this.state.message + ` ${e.native}` });
   };
@@ -30,6 +40,7 @@ class SendForm extends Component {
         this.props.user.username
       );
     this.setState({ message: "" });
+    setTimeout(() => this.scrollToBottom(), 500);
   };
 
   render() {
@@ -42,9 +53,10 @@ class SendForm extends Component {
           messageObject={messageObject}
         />
       ));
+
       return (
         <>
-          <div className="channel">
+          <div className="channel" id="divscroll">
             <h4 style={{ color: "red", fontSize: "15px" }} className=" ml-2">
               By {this.props.owner.owner}
             </h4>
@@ -57,46 +69,62 @@ class SendForm extends Component {
             </ul>
           </div>
 
-          <div style={{ backgroundColor: "grey", height: "20vh" }}>
-            <form onSubmit={this.handleSubmit}>
-              <div className=" col-9 ">
-                <textarea
-                  className=" col-9 rounded mt-2"
-                  name="message"
-                  placeholder={`Message ${this.props.name}`}
-                  onChange={this.changeHandler}
-                  value={this.state.message}
-                  rows="4"
-                  style={{ resize: "none" }}
-                ></textarea>
-                <div className=" btn">
-                  <input
-                    className=" btn btn-success btn-block "
-                    type="submit"
-                    value="Send"
+          <div style={{ backgroundColor: "gray", height: "20vh" }}>
+            <form className="form-inline" onSubmit={this.handleSubmit}>
+              <textarea
+                className=" col-9 rounded mt-2"
+                name="message"
+                placeholder={`Message ${this.props.name}`}
+                onChange={this.changeHandler}
+                value={this.state.message}
+                rows="4"
+                style={{ resize: "none", margin: "20px" }}
+              ></textarea>
+              <div>
+                <div className="row ml-2">
+                  <div className=" btn">
+                    <input
+                      className=" btn btn-success btn-block "
+                      type="submit"
+                      value="Send"
+                    />
+                  </div>
+                </div>
+                <div className="row ml-2">
+                  <FontAwesomeIcon
+                    icon={faSmileBeam}
+                    onClick={() =>
+                      this.setState({ showemoji: !this.state.showemoji })
+                    }
+                    style={{ width: "40px", height: "40px", color: "yellow" }}
                   />
                 </div>
                 <FontAwesomeIcon
-                  icon={faUserPlus}
-                  onClick={() =>
-                    this.setState({ showemoji: !this.state.showemoji })
-                  }
+                  icon={faArrowAltCircleDown}
+                  onClick={() => this.scrollToBottom()}
+                  style={{
+                    position: "absolute",
+                    zIndex: 9,
+                    top: "80px",
+                    right: "50px",
+                    color: "white"
+                  }}
                 />
-              </div>
-              <div
-                style={{
-                  float: "left",
-                  position: "absolute",
-                  zIndex: 9,
-                  top: "250px",
-                  right: "10px"
-                }}
-              >
-                {this.state.showemoji ? (
-                  <Picker onSelect={this.addEmoji} />
-                ) : (
-                  ""
-                )}
+                <div
+                  style={{
+                    float: "left",
+                    position: "absolute",
+                    zIndex: 9,
+                    top: "100px",
+                    right: "10px"
+                  }}
+                >
+                  {this.state.showemoji ? (
+                    <Picker onSelect={this.addEmoji} />
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
             </form>
           </div>

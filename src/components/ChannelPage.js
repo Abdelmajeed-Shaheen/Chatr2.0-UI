@@ -4,6 +4,13 @@ import { fetchMessages } from "../redux/actions";
 import SendForm from "./SendForm";
 
 class ChannelPage extends Component {
+  scrollToBottom() {
+    var objDiv = document.getElementById("divscroll");
+    if (objDiv) {
+      objDiv.scrollTop = objDiv.scrollHeight;
+    }
+  }
+
   setFetchMessagesInterval(channelID) {
     this.props.fetchMessages(channelID);
     this.interval = setInterval(() => {
@@ -19,6 +26,11 @@ class ChannelPage extends Component {
 
   componentDidUpdate(prevProps) {
     const channelID = this.props.match.params.channelID;
+    if (prevProps.openedChannel !== null) {
+      if (prevProps.openedChannel.length !== this.props.openedChannel.length) {
+        setTimeout(() => this.scrollToBottom(), 500);
+      }
+    }
     if (prevProps.match.params.channelID !== channelID) {
       clearInterval(this.interval);
       this.setFetchMessagesInterval(channelID);
