@@ -20,11 +20,6 @@ class AddChannel extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    /*
-     * Instead of passing the history to the action,
-     * you can use the history.replace(...) here in this
-     * event handler.
-     */
     this.state.name && this.props.addChannel(this.state, this.props.history);
   };
 

@@ -4,7 +4,8 @@ import {
   ADD_CHANNEL,
   SET_ERRORS,
   FETCH_CHANNEL,
-  SEND_MESSAGE
+  SEND_MESSAGE,
+  FILTER_CHANNELS
 } from "./actionTypes";
 
 import { setErrors } from "./errors";
@@ -47,10 +48,6 @@ export const addChannel = (channel, history) => {
   };
 };
 
-/**
- * Is this fetching a "channel"?
- * Looks like it's fetching messages
- */
 export const fetchMessages = channelID => {
   return async dispatch => {
     try {
@@ -68,8 +65,7 @@ export const fetchMessages = channelID => {
   };
 };
 
-// I'd recommend you rename this to sendMessage for readability.
-export const sendMsg = (msg, channelID, user) => {
+export const sendMessage = (msg, channelID, user) => {
   return async dispatch => {
     try {
       const message = {
@@ -89,5 +85,12 @@ export const sendMsg = (msg, channelID, user) => {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export const filterChannels = query => {
+  return {
+    type: FILTER_CHANNELS,
+    payload: query
   };
 };

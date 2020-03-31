@@ -2,12 +2,14 @@ import {
   FETCH_CHANNELS,
   ADD_CHANNEL,
   FETCH_CHANNEL,
-  SEND_MESSAGE
+  SEND_MESSAGE,
+  FILTER_CHANNELS
 } from "../actions/actionTypes";
 
 const initialState = {
   channels: [],
-  openedChannel: null
+  openedChannel: null,
+  filteredChannels: []
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -16,7 +18,8 @@ const reducer = (state = initialState, { type, payload }) => {
       const allChannels = payload;
       return {
         ...state,
-        channels: allChannels
+        channels: allChannels,
+        filteredChannels: allChannels
       };
     case ADD_CHANNEL:
       return {
@@ -31,7 +34,16 @@ const reducer = (state = initialState, { type, payload }) => {
     case SEND_MESSAGE:
       return {
         ...state,
-        openedChannel: state.openedChannel.concat(payload) // Do you know of a prettier syntax for this? :D
+        openedChannel: [...state.openedChannel, payload]
+      };
+    case FILTER_CHANNELS:
+      return {
+        ...state,
+        filteredChannels: state.channels.filter(channel => {
+          return `${channel.name}`
+            .toLowerCase()
+            .includes(payload.toLowerCase());
+        })
       };
     default:
       return state;

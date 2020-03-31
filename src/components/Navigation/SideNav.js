@@ -12,12 +12,13 @@ import {
 
 // Components
 import ChannelNavLink from "./ChannelNavLink";
+import SearchBar from "./SearchBar";
 
 class SideNav extends React.Component {
   state = { collapsed: false };
 
   render() {
-    const channelLinks = this.props.channels.map(channel => (
+    const channelLinks = this.props.filteredChannels.map(channel => (
       <ChannelNavLink key={channel.name} channel={channel} />
     ));
     return (
@@ -34,6 +35,9 @@ class SideNav extends React.Component {
                   <span className="nav-link-text mr-2">Channels</span>
                   <FontAwesomeIcon icon={faPlusCircle} />
                 </Link>
+                {!this.state.collapsed && (
+                  <SearchBar onChange={this.filterChannels} />
+                )}
               </li>
               <>{channelLinks}</>
             </>
@@ -77,7 +81,8 @@ class SideNav extends React.Component {
 
 const mapStateToProps = state => ({
   user: state.userState.user,
-  channels: state.channelsState.channels
+  channels: state.channelsState.channels,
+  filteredChannels: state.channelsState.filteredChannels
 });
 
 export default connect(mapStateToProps)(SideNav);
