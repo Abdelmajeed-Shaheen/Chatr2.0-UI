@@ -135,7 +135,7 @@ class Chat extends Component {
                   }}
                 >
                   {this.state.showemoji ? (
-                    <Picker onSelect={this.addEmoji} />
+                    <Picker onSelect={this.addEmoji} title="سواليف" />
                   ) : (
                     ""
                   )}

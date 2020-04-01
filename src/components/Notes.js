@@ -86,7 +86,7 @@ class Notes extends Component {
         </div>
         <div
           style={{
-            overflowY: "scroll",
+            overflowY: "auto",
             height: "300px",
             backgroundColor: "rgba(26, 35, 126,0.5)",
             borderRadius: "40px"
