@@ -27,14 +27,25 @@ class AddChannel extends Component {
     if (!this.props.user) return <Redirect to="/welcome" />;
     const { name, image_url } = this.state;
     return (
-      <div className="my-6">
-        <div className="container-fluid jumbotron bg-transparent my-5 align-ceneter">
+      <div className="bgcreate">
+        <div className="container-fluid jumbotron bg-transparent text-center align-ceneter">
           <div className=" col-6 mx-auto my-5">
-            <div className="card my-5">
+            <div
+              className="card my-5"
+              style={{
+                backgroundColor: "rgba(255, 255, 255, 0.6)  ",
+                borderRadius: "50px"
+              }}
+            >
               <div className="card-body">
                 <form onSubmit={this.handleSubmit}>
                   <div className="form-group">
-                    <label htmlFor="name">Channel Name :</label>
+                    <label
+                      htmlFor="name"
+                      style={{ fontFamily: "Comic Sans MS", color: "#1a237e" }}
+                    >
+                      Channel Name{" "}
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -43,6 +54,7 @@ class AddChannel extends Component {
                       name="name"
                       placeholder="Add channel"
                       onChange={this.handleChange}
+                      style={{ fontFamily: "Comic Sans MS" }}
                       required
                     />
                     <p style={{ color: "red" }}>
@@ -50,7 +62,12 @@ class AddChannel extends Component {
                     </p>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="image_url">Logo Image :</label>
+                    <label
+                      htmlFor="image_url"
+                      style={{ fontFamily: "Comic Sans MS", color: "#1a237e" }}
+                    >
+                      Logo Image{" "}
+                    </label>
                     <input
                       type="image_url"
                       className="form-control"
@@ -59,13 +76,23 @@ class AddChannel extends Component {
                       name="image_url"
                       placeholder="Add Url"
                       onChange={this.handleChange}
+                      style={{ fontFamily: "Comic Sans MS" }}
                     />
                     <p style={{ color: "red" }}>
                       {this.props.errors ? this.props.errors.image_url : ""}
                     </p>
                   </div>
                   <div className="text-center">
-                    <button type="submit" className="btn btn-primary">
+                    <button
+                      type="submit"
+                      className="btn btn-primary"
+                      style={{
+                        fontFamily: "Comic Sans MS",
+                        backgroundColor: "#ffd600 ",
+                        borderColor: "#1a237e",
+                        color: "#1a237e"
+                      }}
+                    >
                       Create
                     </button>
                   </div>

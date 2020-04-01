@@ -28,14 +28,17 @@ class Login extends Component {
             <div
               className="card my-5"
               style={{
-                backgroundColor: "transparent",
-                borderColor: "transparent"
+                backgroundColor: "rgba(255, 255, 255, 0.6)  ",
+                borderRadius: "50px"
               }}
             >
               <div className="card-body">
                 <form onSubmit={this.handleSubmit}>
                   <div className="form-group">
-                    <label htmlFor="username" style={{ color: "#1a237e" }}>
+                    <label
+                      htmlFor="username"
+                      style={{ fontFamily: "Comic Sans MS", color: "#1a237e" }}
+                    >
                       Username
                     </label>
                     <input
@@ -46,10 +49,14 @@ class Login extends Component {
                       name="username"
                       placeholder="Username"
                       onChange={this.handleChange}
+                      style={{ fontFamily: "Comic Sans MS" }}
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="password" style={{ color: "#1a237e" }}>
+                    <label
+                      htmlFor="password"
+                      style={{ fontFamily: "Comic Sans MS", color: "#1a237e" }}
+                    >
                       Password
                     </label>
                     <input
@@ -60,6 +67,7 @@ class Login extends Component {
                       name="password"
                       placeholder="Password"
                       onChange={this.handleChange}
+                      style={{ fontFamily: "Comic Sans MS" }}
                     />
                     <p style={{ color: "red" }}>
                       {" "}
@@ -85,7 +93,7 @@ class Login extends Component {
                   <Link
                     to="/signup"
                     className="btn btn-link my-2 my-sm-0"
-                    style={{ color: "#1a237e" }}
+                    style={{ fontFamily: "Comic Sans MS", color: "#1a237e" }}
                   >
                     Signup for an account
                   </Link>

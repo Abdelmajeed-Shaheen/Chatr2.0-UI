@@ -135,6 +135,12 @@
   background-size: cover;
 }
 
+.bgcreate {
+  background-image: url("https://media.giphy.com/media/EOpZ7XsVfTN2E/giphy.gif");
+  height: 85vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .channel {
   padding-top: 2em;
   overflow-y: scroll;

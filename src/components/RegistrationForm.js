@@ -28,14 +28,17 @@ class RegistationForm extends Component {
             <div
               className="card my-5"
               style={{
-                backgroundColor: "transparent",
-                borderColor: "transparent"
+                backgroundColor: "rgba(255, 255, 255, 0.6)  ",
+                borderRadius: "50px"
               }}
             >
               <div className="card-body">
                 <form onSubmit={this.submitHandler}>
                   <div className="form-group">
-                    <label htmlFor="username" style={{ color: "white" }}>
+                    <label
+                      htmlFor="username"
+                      style={{ fontFamily: "Comic Sans MS", color: "#1a237e" }}
+                    >
                       Username
                     </label>
                     <input
@@ -49,7 +52,10 @@ class RegistationForm extends Component {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="password" style={{ color: "white" }}>
+                    <label
+                      htmlFor="password"
+                      style={{ fontFamily: "Comic Sans MS", color: "#1a237e" }}
+                    >
                       Password
                     </label>
                     <input
@@ -60,6 +66,7 @@ class RegistationForm extends Component {
                       name="password"
                       placeholder="Password"
                       onChange={this.changeHandler}
+                      style={{ fontFamily: "Comic Sans MS" }}
                     />
 
                     {this.props.errors ? (
@@ -87,7 +94,7 @@ class RegistationForm extends Component {
                   <Link
                     to="/login"
                     className="btn btn-link my-2 my-sm-0"
-                    style={{ color: "white" }}
+                    style={{ fontFamily: "Comic Sans MS", color: "#1a237e" }}
                   >
                     Login With an Existing Account
                   </Link>
