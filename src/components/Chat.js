@@ -153,7 +153,7 @@ class Chat extends Component {
             paddingBottom: "1em"
           }}
         >
-          <div style={{ paddingTop: "45vh", paddingLeft: "60vh" }}>
+          <div style={{ paddingTop: "45vh", paddingLeft: "40%" }}>
             <div class="spinner-grow" role="status">
               <span class="sr-only">Loading...</span>
             </div>
