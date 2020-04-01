@@ -154,14 +154,14 @@ class Chat extends Component {
           }}
         >
           <div style={{ paddingTop: "45vh", paddingLeft: "35%" }}>
-            <div class="spinner-grow" role="status">
-              <span class="sr-only">Loading...</span>
+            <div className="spinner-grow" role="status">
+              <span className="sr-only">Loading...</span>
             </div>
-            <div class="spinner-grow" role="status">
-              <span class="sr-only">Loading...</span>
+            <div className="spinner-grow" role="status">
+              <span className="sr-only">Loading...</span>
             </div>
-            <div class="spinner-grow" role="status">
-              <span class="sr-only">Loading...</span>
+            <div className="spinner-grow" role="status">
+              <span className="sr-only">Loading...</span>
             </div>
           </div>
         </div>
