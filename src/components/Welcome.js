@@ -8,7 +8,7 @@ const Welcome = ({ user }) => {
     <div className="bg text-center">
       <div
         style={{
-          backgroundColor: "rgba(255, 255, 255, 0.5)  ",
+          backgroundColor: "transparent ",
           height: "85vh"
         }}
       >

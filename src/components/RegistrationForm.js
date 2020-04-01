@@ -22,14 +22,22 @@ class RegistationForm extends Component {
     if (this.props.user) return <Redirect to="/private" />;
     const { username, password } = this.state;
     return (
-      <div className="my-6">
-        <div className="container-fluid jumbotron bg-transparent my-5 text-center align-ceneter">
+      <div className="bgsignup">
+        <div className="container-fluid jumbotron bg-transparent text-center align-ceneter">
           <div className=" col-6 mx-auto my-5">
-            <div className="card my-5">
+            <div
+              className="card my-5"
+              style={{
+                backgroundColor: "transparent",
+                borderColor: "transparent"
+              }}
+            >
               <div className="card-body">
                 <form onSubmit={this.submitHandler}>
                   <div className="form-group">
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username" style={{ color: "white" }}>
+                      Username
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -41,7 +49,9 @@ class RegistationForm extends Component {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password" style={{ color: "white" }}>
+                      Password
+                    </label>
                     <input
                       type="password"
                       className="form-control"
@@ -61,11 +71,24 @@ class RegistationForm extends Component {
                     )}
                   </div>
 
-                  <button type="submit" className="btn btn-primary">
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    style={{
+                      fontFamily: "Comic Sans MS",
+                      backgroundColor: "#ffd600 ",
+                      borderColor: "#1a237e",
+                      color: "#1a237e"
+                    }}
+                  >
                     Signup
                   </button>
                   <br />
-                  <Link to="/login" className="btn btn-link my-2 my-sm-0">
+                  <Link
+                    to="/login"
+                    className="btn btn-link my-2 my-sm-0"
+                    style={{ color: "white" }}
+                  >
                     Login With an Existing Account
                   </Link>
                 </form>

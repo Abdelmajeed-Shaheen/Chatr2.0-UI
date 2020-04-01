@@ -116,7 +116,20 @@
 }
 
 .bg {
-  background-image: url("../images/bubble.jpg");
+  background-image: url("https://media.giphy.com/media/ZrlYxeVZ0zqkU/giphy.gif");
+  height: 85vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bglogin {
+  background-image: url("https://media.giphy.com/media/TlK63EJsc8ZiXeuYWNW/giphy.gif");
+  height: 85vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bgsignup {
+  background-image: url("https://media.giphy.com/media/3nmrZ76aKP1Je/giphy.gif");
   height: 85vh;
   background-repeat: no-repeat;
   background-size: cover;
