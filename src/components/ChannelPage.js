@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { fetchMessages } from "../redux/actions";
 import SendForm from "./SendForm";
 
@@ -47,17 +48,23 @@ class ChannelPage extends Component {
     );
     const owner = channel ? channel.owner : "";
     return (
-      <SendForm
-        owner={owner}
-        name={this.props.match.params.name}
-        channelID={this.props.match.params.channelID}
-      />
+      <>
+        {!this.props.user ? (
+          <Redirect to="/login" />
+        ) : (
+          <SendForm
+            owner={owner}
+            name={this.props.match.params.name}
+            channelID={this.props.match.params.channelID}
+          />
+        )}
+      </>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  user: state.userState,
+  user: state.userState.user,
   openedChannel: state.channelsState.openedChannel,
   channels: state.channelsState.channels,
   channelid: state.channelsState.channelid
