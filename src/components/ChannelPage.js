@@ -5,6 +5,9 @@ import { fetchMessages } from "../redux/actions";
 import Chat from "./Chat";
 
 class ChannelPage extends Component {
+  state = {
+    updated: false
+  };
   scrollToBottom() {
     var objDiv = document.getElementById("divscroll");
     if (objDiv) {
@@ -33,6 +36,8 @@ class ChannelPage extends Component {
       }
     }
     if (prevProps.match.params.channelID !== channelID) {
+      this.setState({ updated: true });
+      setTimeout(() => this.setState({ updated: false }), 1500);
       clearInterval(this.interval);
       this.setFetchMessagesInterval(channelID);
     }
@@ -56,6 +61,7 @@ class ChannelPage extends Component {
             owner={owner}
             name={this.props.match.params.name}
             channelID={this.props.match.params.channelID}
+            updated={this.state.updated}
           />
         )}
       </>

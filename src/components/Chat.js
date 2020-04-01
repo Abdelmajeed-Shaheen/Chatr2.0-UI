@@ -13,8 +13,7 @@ import {
 class Chat extends Component {
   state = {
     message: "",
-    showemoji: false,
-    shift: 0
+    showemoji: false
   };
 
   scrollToBottom() {
@@ -49,7 +48,7 @@ class Chat extends Component {
   };
   render() {
     const channel = this.props.openedChannel;
-    if (channel) {
+    if (channel && !this.props.updated) {
       const messages = channel.map(messageObject => (
         <Message
           key={`${messageObject.message} ${messageObject.id} ${messageObject.timestamp}`}
@@ -57,7 +56,6 @@ class Chat extends Component {
           messageObject={messageObject}
         />
       ));
-
       return (
         <>
           <div className="channel" id="divscroll">
@@ -146,7 +144,28 @@ class Chat extends Component {
         </>
       );
     } else {
-      return <div> Not Found </div>;
+      return (
+        <div
+          style={{
+            backgroundColor: "#546e7a",
+            height: "100vh",
+            paddingLeft: "10em",
+            paddingBottom: "1em"
+          }}
+        >
+          <div style={{ paddingTop: "45vh", paddingLeft: "60vh" }}>
+            <div class="spinner-grow" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+      );
     }
   }
 }
