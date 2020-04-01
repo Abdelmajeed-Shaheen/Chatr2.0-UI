@@ -64,7 +64,14 @@ class Chat extends Component {
             </ul>
           </div>
 
-          <div style={{ backgroundColor: "#546e7a", height: "20vh" }}>
+          <div
+            style={{
+              backgroundColor: "#546e7a",
+              height: "100%",
+              paddingLeft: "10em",
+              paddingBottom: "1em"
+            }}
+          >
             <form className="form-inline" onSubmit={this.handleSubmit}>
               <textarea
                 className=" col-9 rounded mt-2"
@@ -106,7 +113,7 @@ class Chat extends Component {
                     zIndex: 9,
                     top: "80px",
                     right: "50px",
-                    color: "white",
+                    color: "#1c2331",
                     height: "30px",
                     width: "30px"
                   }}

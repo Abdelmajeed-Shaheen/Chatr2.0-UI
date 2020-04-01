@@ -33,7 +33,7 @@ const Message = props => {
             props.messageObject.message.includes("http://") ? (
               <img
                 src={props.messageObject.message}
-                alt={props.messageObject.username}
+                alt={props.messageObject.message}
                 style={{ width: "250px", height: "250px" }}
               />
             ) : (
