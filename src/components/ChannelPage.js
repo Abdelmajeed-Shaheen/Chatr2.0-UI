@@ -17,7 +17,7 @@ class ChannelPage extends Component {
     this.interval = setInterval(() => {
       if (this.props.match.params.channelID !== undefined)
         this.props.fetchMessages(this.props.match.params.channelID);
-    }, 500);
+    }, 3000);
   }
 
   componentDidMount() {
@@ -29,7 +29,7 @@ class ChannelPage extends Component {
     const channelID = this.props.match.params.channelID;
     if (prevProps.openedChannel !== null) {
       if (prevProps.openedChannel.length !== this.props.openedChannel.length) {
-        setTimeout(() => this.scrollToBottom(), 500);
+        setTimeout(() => this.scrollToBottom(), 1000);
       }
     }
     if (prevProps.match.params.channelID !== channelID) {

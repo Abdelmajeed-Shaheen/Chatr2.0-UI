@@ -13,7 +13,8 @@ import {
 class Chat extends Component {
   state = {
     message: "",
-    showemoji: false
+    showemoji: false,
+    shift: 0
   };
 
   scrollToBottom() {
@@ -40,7 +41,12 @@ class Chat extends Component {
       );
     this.setState({ message: "" });
   };
-
+  key_up = e => {
+    //Key Code for Enter Key
+    if (!(e.key === "Enter" && e.shiftKey) && e.key === "Enter") {
+      this.handleSubmit(e);
+    }
+  };
   render() {
     const channel = this.props.openedChannel;
     if (channel) {
@@ -81,6 +87,7 @@ class Chat extends Component {
                 value={this.state.message}
                 rows="5"
                 style={{ resize: "none" }}
+                onKeyPress={this.key_up}
               ></textarea>
               <div>
                 <div className="row ml-1">
