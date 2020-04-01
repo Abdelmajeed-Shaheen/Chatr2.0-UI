@@ -18,12 +18,12 @@ class Clock extends Component {
     const date = this.state.timeanddate.toLocaleDateString();
     const time = this.state.timeanddate.toLocaleTimeString();
     return (
-      <div className="text-center ml-5">
+      <div className="text-center ml-5 pl-5">
         <div className="row mt-5">
           <h1
             style={{
               fontFamily: "Calligraffitti",
-              fontSize: "70px",
+              fontSize: "40px",
               color: "#1a237e  ",
               fontWeight: "1000"
             }}
@@ -35,7 +35,7 @@ class Clock extends Component {
           <h1
             style={{
               fontFamily: "Calligraffitti",
-              fontSize: "70px",
+              fontSize: "40px",
               color: "#1a237e  ",
               fontWeight: "1000"
             }}
