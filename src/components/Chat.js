@@ -10,7 +10,7 @@ import {
   faArrowAltCircleDown
 } from "@fortawesome/free-solid-svg-icons";
 
-class SendForm extends Component {
+class Chat extends Component {
   state = {
     message: "",
     showemoji: false
@@ -147,4 +147,4 @@ const mapDispatchToProps = dispatch => {
       dispatch(sendMessage(msg, channelID, user))
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(SendForm);
+export default connect(mapStateToProps, mapDispatchToProps)(Chat);

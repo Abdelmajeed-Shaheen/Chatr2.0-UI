@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { fetchMessages } from "../redux/actions";
-import SendForm from "./SendForm";
+import Chat from "./Chat";
 
 class ChannelPage extends Component {
   scrollToBottom() {
@@ -52,7 +52,7 @@ class ChannelPage extends Component {
         {!this.props.user ? (
           <Redirect to="/login" />
         ) : (
-          <SendForm
+          <Chat
             owner={owner}
             name={this.props.match.params.name}
             channelID={this.props.match.params.channelID}
