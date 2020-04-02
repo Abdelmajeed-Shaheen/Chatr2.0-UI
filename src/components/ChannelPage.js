@@ -20,9 +20,16 @@ class ChannelPage extends Component {
     this.interval = setInterval(() => {
       if (this.props.match.params.channelID !== undefined) {
         const msg = this.props.openedChannel;
-        const lastmsg = msg[msg.length - 1];
-        const timestamp = lastmsg.timestamp;
-        this.props.fetchMessages(this.props.match.params.channelID, timestamp);
+        if (msg.length) {
+          const lastmsg = msg[msg.length - 1];
+          const timestamp = lastmsg.timestamp;
+          this.props.fetchMessages(
+            this.props.match.params.channelID,
+            timestamp
+          );
+        } else {
+          this.props.fetchMessages(this.props.match.params.channelID, "");
+        }
       }
     }, 3000);
   }
