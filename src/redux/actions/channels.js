@@ -5,7 +5,8 @@ import {
   SET_ERRORS,
   FETCH_CHANNEL,
   SEND_MESSAGE,
-  FILTER_CHANNELS
+  FILTER_CHANNELS,
+  CLEAR_MESSAGES
 } from "./actionTypes";
 
 import { setErrors } from "./errors";
@@ -14,7 +15,6 @@ export const fetchAllChannels = () => {
     try {
       const res = await axios.get("https://api-chatr.herokuapp.com/channels/");
       const channels = res.data;
-
       dispatch({
         type: FETCH_CHANNELS,
         payload: channels
@@ -51,11 +51,11 @@ export const addChannel = (channel, history) => {
 /**
  * You definitely should be using the timestamp
  */
-export const fetchMessages = channelID => {
+export const fetchMessages = (channelID, timestamp) => {
   return async dispatch => {
     try {
       const res = await axios.get(
-        `https://api-chatr.herokuapp.com/channels/${channelID}`
+        `https://api-chatr.herokuapp.com/channels/${channelID}/?latest=${timestamp}`
       );
       const channel = res.data;
       dispatch({
@@ -95,5 +95,12 @@ export const filterChannels = query => {
   return {
     type: FILTER_CHANNELS,
     payload: query
+  };
+};
+
+export const clearMessages = () => {
+  return {
+    type: CLEAR_MESSAGES,
+    payload: []
   };
 };

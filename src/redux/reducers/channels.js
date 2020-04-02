@@ -3,12 +3,13 @@ import {
   ADD_CHANNEL,
   FETCH_CHANNEL,
   SEND_MESSAGE,
-  FILTER_CHANNELS
+  FILTER_CHANNELS,
+  CLEAR_MESSAGES
 } from "../actions/actionTypes";
 
 const initialState = {
   channels: [],
-  openedChannel: null,
+  openedChannel: [],
   filteredChannels: []
 };
 
@@ -29,7 +30,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case FETCH_CHANNEL:
       return {
         ...state,
-        openedChannel: payload
+        openedChannel: [...state.openedChannel, ...payload]
       };
     case SEND_MESSAGE:
       return {
@@ -48,6 +49,11 @@ const reducer = (state = initialState, { type, payload }) => {
             .toLowerCase()
             .includes(payload.toLowerCase());
         })
+      };
+    case CLEAR_MESSAGES:
+      return {
+        ...state,
+        openedChannel: []
       };
     default:
       return state;

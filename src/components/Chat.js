@@ -9,11 +9,7 @@ import {
   faSmileBeam,
   faArrowAltCircleDown
 } from "@fortawesome/free-solid-svg-icons";
-
-/**
- * This component is doing WAY too much.
- * Split it up into several smaller more focused components.
- */
+import Loading from "./Loading";
 class Chat extends Component {
   state = {
     message: "",
@@ -21,19 +17,14 @@ class Chat extends Component {
   };
 
   scrollToBottom() {
-    /**
-     * Look into using a `ref` instead of using DOM manipulation
-     */
     var objDiv = document.getElementById("divscroll");
     if (objDiv) {
       objDiv.scrollTop = objDiv.scrollHeight;
     }
   }
   addEmoji = e => {
-    /**
-     * You shouldn't use current state inside setState. It's unstable.
-     */
-    this.setState({ message: this.state.message + ` ${e.native}` });
+    const message = this.state.message;
+    this.setState({ message: message + ` ${e.native}` });
   };
 
   changeHandler = event => {
@@ -154,28 +145,7 @@ class Chat extends Component {
         </>
       );
     } else {
-      return (
-        <div
-          style={{
-            backgroundColor: "#546e7a",
-            height: "100vh",
-            paddingLeft: "10em",
-            paddingBottom: "1em"
-          }}
-        >
-          <div style={{ paddingTop: "45vh", paddingLeft: "35%" }}>
-            <div className="spinner-grow" role="status">
-              <span className="sr-only">Loading...</span>
-            </div>
-            <div className="spinner-grow" role="status">
-              <span className="sr-only">Loading...</span>
-            </div>
-            <div className="spinner-grow" role="status">
-              <span className="sr-only">Loading...</span>
-            </div>
-          </div>
-        </div>
-      );
+      return <Loading />;
     }
   }
 }

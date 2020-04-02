@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { fetchMessages } from "../redux/actions";
+import { fetchMessages, clearMessages } from "../redux/actions";
 import Chat from "./Chat";
 
 class ChannelPage extends Component {
   state = {
-    updated: false
+    updated: true
   };
   scrollToBottom() {
     var objDiv = document.getElementById("divscroll");
@@ -16,30 +16,38 @@ class ChannelPage extends Component {
   }
 
   setFetchMessagesInterval(channelID) {
-    this.props.fetchMessages(channelID);
+    this.props.fetchMessages(channelID, "");
     this.interval = setInterval(() => {
-      if (this.props.match.params.channelID !== undefined)
-        this.props.fetchMessages(this.props.match.params.channelID);
+      if (this.props.match.params.channelID !== undefined) {
+        const msg = this.props.openedChannel;
+        const lastmsg = msg[msg.length - 1];
+        const timestamp = lastmsg.timestamp;
+        this.props.fetchMessages(this.props.match.params.channelID, timestamp);
+      }
     }, 3000);
   }
 
   componentDidMount() {
     const channelID = this.props.match.params.channelID;
+    setTimeout(() => this.setState({ updated: false }), 3000);
     this.setFetchMessagesInterval(channelID);
   }
 
   componentDidUpdate(prevProps) {
     const channelID = this.props.match.params.channelID;
+
+    if (prevProps.match.params.channelID !== channelID) {
+      this.setState({ updated: true });
+      clearInterval(this.interval);
+      this.props.clearMessages();
+      this.setFetchMessagesInterval(channelID);
+      setTimeout(() => this.setState({ updated: false }), 3000);
+      setTimeout(() => this.scrollToBottom(), 3500);
+    }
     if (prevProps.openedChannel !== null) {
       if (prevProps.openedChannel.length !== this.props.openedChannel.length) {
         setTimeout(() => this.scrollToBottom(), 1000);
       }
-    }
-    if (prevProps.match.params.channelID !== channelID) {
-      this.setState({ updated: true });
-      setTimeout(() => this.setState({ updated: false }), 1500);
-      clearInterval(this.interval);
-      this.setFetchMessagesInterval(channelID);
     }
   }
 
@@ -78,7 +86,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchMessages: channelID => dispatch(fetchMessages(channelID))
+    fetchMessages: (channelID, timestamp) =>
+      dispatch(fetchMessages(channelID, timestamp)),
+    clearMessages: () => dispatch(clearMessages())
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ChannelPage);

@@ -50,14 +50,6 @@ export const signup = (userData, history) => {
       const user = res.data;
       dispatch(setCurrentUser(user.token));
       history.replace("/private");
-
-      /**
-       * I don't think you need this dispatch
-       */
-      dispatch({
-        type: SET_ERRORS,
-        payload: null
-      });
     } catch (err) {
       dispatch({
         type: SET_ERRORS,
