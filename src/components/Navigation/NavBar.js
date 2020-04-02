@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 
 // Components
 import SideNav from "./SideNav";
@@ -37,11 +36,4 @@ const NavBar = props => {
   );
 };
 
-/**
- * Unused
- */
-const mapStateToProps = state => ({
-  user: state.userState.user
-});
-
-export default connect(mapStateToProps)(NavBar);
+export default NavBar;
