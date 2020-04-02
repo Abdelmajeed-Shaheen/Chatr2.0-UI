@@ -50,6 +50,10 @@ export const signup = (userData, history) => {
       const user = res.data;
       dispatch(setCurrentUser(user.token));
       history.replace("/private");
+
+      /**
+       * I don't think you need this dispatch
+       */
       dispatch({
         type: SET_ERRORS,
         payload: null
@@ -68,6 +72,10 @@ const setCurrentUser = token => {
     let user = null;
     if (token) {
       localStorage.setItem("token", token);
+      /**
+       * Set headers on the instance and make sure you're using it
+       * for all your requests
+       */
       axios.defaults.headers.common.Authorization = `jwt ${token}`;
       user = jwt_decode(token);
       dispatch(fetchAllChannels());

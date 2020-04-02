@@ -10,6 +10,10 @@ import {
   faArrowAltCircleDown
 } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * This component is doing WAY too much.
+ * Split it up into several smaller more focused components.
+ */
 class Chat extends Component {
   state = {
     message: "",
@@ -17,12 +21,18 @@ class Chat extends Component {
   };
 
   scrollToBottom() {
+    /**
+     * Look into using a `ref` instead of using DOM manipulation
+     */
     var objDiv = document.getElementById("divscroll");
     if (objDiv) {
       objDiv.scrollTop = objDiv.scrollHeight;
     }
   }
   addEmoji = e => {
+    /**
+     * You shouldn't use current state inside setState. It's unstable.
+     */
     this.setState({ message: this.state.message + ` ${e.native}` });
   };
 
