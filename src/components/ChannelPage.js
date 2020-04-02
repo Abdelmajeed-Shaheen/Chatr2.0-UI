@@ -6,7 +6,10 @@ import Chat from "./Chat";
 
 class ChannelPage extends Component {
   state = {
-    updated: true
+    updated: true,
+    msg: localStorage.getItem(this.props.match.params.channelID)
+      ? localStorage.getItem(this.props.match.params.channelID)
+      : ""
   };
   scrollToBottom() {
     var objDiv = document.getElementById("divscroll");
@@ -42,12 +45,14 @@ class ChannelPage extends Component {
 
   componentDidUpdate(prevProps) {
     const channelID = this.props.match.params.channelID;
-
     if (prevProps.match.params.channelID !== channelID) {
       this.setState({ updated: true });
       clearInterval(this.interval);
       this.props.clearMessages();
       this.setFetchMessagesInterval(channelID);
+      this.setState({
+        msg: localStorage.getItem(channelID)
+      });
       setTimeout(() => this.setState({ updated: false }), 3000);
       setTimeout(() => this.scrollToBottom(), 3500);
     }
@@ -77,6 +82,7 @@ class ChannelPage extends Component {
             name={this.props.match.params.name}
             channelID={this.props.match.params.channelID}
             updated={this.state.updated}
+            msg={this.state.msg}
           />
         )}
       </>

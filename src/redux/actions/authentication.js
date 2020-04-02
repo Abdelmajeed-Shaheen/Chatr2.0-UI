@@ -87,6 +87,6 @@ const setCurrentUser = token => {
 };
 
 export const logout = () => {
-  localStorage.removeItem("list");
+  localStorage.clear();
   return setCurrentUser();
 };

@@ -12,7 +12,7 @@ import {
 import Loading from "./Loading";
 class Chat extends Component {
   state = {
-    message: "",
+    message: this.props.msg,
     showemoji: false
   };
 
@@ -23,12 +23,15 @@ class Chat extends Component {
     }
   }
   addEmoji = e => {
-    const message = this.state.message;
-    this.setState({ message: message + ` ${e.native}` });
+    const message = this.state.message + ` ${e.native}`;
+    this.setState({ message: message });
+    localStorage.setItem(this.props.channelID, message);
   };
 
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
+    const msg = event.target.value;
+    localStorage.setItem(this.props.channelID, msg);
   };
 
   handleSubmit = event => {
@@ -40,6 +43,7 @@ class Chat extends Component {
         this.props.user.username
       );
     this.setState({ message: "" });
+    localStorage.removeItem(this.props.channelID);
   };
   key_up = e => {
     //Key Code for Enter Key
@@ -47,6 +51,11 @@ class Chat extends Component {
       this.handleSubmit(e);
     }
   };
+  componentDidUpdate(prevProps) {
+    if (prevProps.msg !== this.props.msg) {
+      this.setState({ message: this.props.msg });
+    }
+  }
   render() {
     const channel = this.props.openedChannel;
     if (channel && !this.props.updated) {
