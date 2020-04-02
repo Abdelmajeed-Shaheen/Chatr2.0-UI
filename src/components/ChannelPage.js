@@ -14,7 +14,7 @@ class ChannelPage extends Component {
   scrollToBottom() {
     var objDiv = document.getElementById("divscroll");
     if (objDiv) {
-      objDiv.scrollTop = objDiv.scrollHeight;
+      objDiv.scrollIntoView();
     }
   }
 

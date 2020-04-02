@@ -19,7 +19,7 @@ class Chat extends Component {
   scrollToBottom() {
     var objDiv = document.getElementById("divscroll");
     if (objDiv) {
-      objDiv.scrollTop = objDiv.scrollHeight;
+      objDiv.scrollIntoView({ behavior: "smooth" });
     }
   }
   addEmoji = e => {
@@ -68,7 +68,7 @@ class Chat extends Component {
       ));
       return (
         <>
-          <div className="channel" id="divscroll">
+          <div className="channel">
             <ul style={{ listStyle: "none" }}>
               {messages.length > 0 ? (
                 messages
@@ -76,6 +76,7 @@ class Chat extends Component {
                 <h3 style={{ color: "white" }}>No messages yet</h3>
               )}
             </ul>
+            <div id="divscroll"></div>
           </div>
 
           <div
