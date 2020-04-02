@@ -26,7 +26,10 @@ const Message = props => {
               borderBlockColor: "transparent"
             }}
           >
-            <b>{props.messageObject.username}</b>
+            <b>
+              {props.messageObject.username} (
+              {props.messageObject.timestamp.substring(11, 16)})
+            </b>
           </div>
           <div className="card-body">
             {props.messageObject.message.includes("https://") ||
@@ -42,6 +45,7 @@ const Message = props => {
               </blockquote>
             )}
           </div>
+
           <div
             className={
               props.user !== props.messageObject.username

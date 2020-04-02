@@ -26,9 +26,9 @@ class ChannelNavLink extends Component {
       >
         <NavLink
           className="nav-link"
-          to={`/channels/${channel.name
-            .toLowerCase()
-            .replace(/[^a-z0-9 -]/g, "")}/${channel.id}`}
+          to={`/channels/${channel.name.replace(/[^a-z0-9 - $ . ^A-Z]/g, "")}/${
+            channel.id
+          }`}
         >
           <ReactImageFallback
             className="rounded-circle"

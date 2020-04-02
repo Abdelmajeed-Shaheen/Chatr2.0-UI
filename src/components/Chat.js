@@ -31,7 +31,11 @@ class Chat extends Component {
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
     const msg = event.target.value;
-    localStorage.setItem(this.props.channelID, msg);
+    if (msg) {
+      localStorage.setItem(this.props.channelID, msg);
+    } else {
+      localStorage.removeItem(this.props.channelID);
+    }
   };
 
   handleSubmit = event => {
