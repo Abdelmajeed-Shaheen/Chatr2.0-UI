@@ -48,6 +48,9 @@ export const addChannel = (channel, history) => {
   };
 };
 
+/**
+ * You definitely should be using the timestamp
+ */
 export const fetchMessages = channelID => {
   return async dispatch => {
     try {

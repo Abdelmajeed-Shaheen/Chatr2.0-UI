@@ -37,6 +37,9 @@ const NavBar = props => {
   );
 };
 
+/**
+ * Unused
+ */
 const mapStateToProps = state => ({
   user: state.userState.user
 });

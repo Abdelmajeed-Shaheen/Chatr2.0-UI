@@ -36,6 +36,10 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         openedChannel: [...state.openedChannel, payload]
       };
+    /**
+     * 😭😭😭
+     * Move filtering to component state. It shouldn't be in redux.
+     */
     case FILTER_CHANNELS:
       return {
         ...state,

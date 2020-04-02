@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * The list management (fetch, add, delete) should be in redux
+ */
 class Notes extends Component {
   state = {
     itemName: "",
