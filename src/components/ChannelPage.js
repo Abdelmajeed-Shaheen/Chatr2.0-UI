@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { fetchMessages, clearMessages } from "../redux/actions";
+import {
+  fetchMessages,
+  clearMessages,
+  aziztalks,
+  deactivateAziz
+} from "../redux/actions";
 import Chat from "./Chat";
-
+import HelpBot from "./HelpBot";
+import { azizmsg } from "../aziz";
 class ChannelPage extends Component {
   state = {
     updated: true,
@@ -30,6 +36,13 @@ class ChannelPage extends Component {
             this.props.match.params.channelID,
             timestamp
           );
+          if (this.props.aziz && !azizmsg.includes(lastmsg.message)) {
+            this.props.aziztalks(
+              lastmsg.message,
+              this.props.match.params.channelID
+            );
+            this.props.deactivateAziz();
+          }
         } else {
           this.props.fetchMessages(this.props.match.params.channelID, "");
         }
@@ -65,6 +78,7 @@ class ChannelPage extends Component {
 
   componentWillUnmount() {
     clearInterval(this.interval);
+    this.props.clearMessages();
   }
 
   render() {
@@ -77,13 +91,16 @@ class ChannelPage extends Component {
         {!this.props.user ? (
           <Redirect to="/login" />
         ) : (
-          <Chat
-            owner={owner}
-            name={this.props.match.params.name}
-            channelID={this.props.match.params.channelID}
-            updated={this.state.updated}
-            msg={this.state.msg}
-          />
+          <>
+            <Chat
+              owner={owner}
+              name={this.props.match.params.name}
+              channelID={this.props.match.params.channelID}
+              updated={this.state.updated}
+              msg={this.state.msg}
+            />
+            <HelpBot />
+          </>
         )}
       </>
     );
@@ -94,14 +111,16 @@ const mapStateToProps = state => ({
   user: state.userState.user,
   openedChannel: state.channelsState.openedChannel,
   channels: state.channelsState.channels,
-  channelid: state.channelsState.channelid
+  aziz: state.botState.aziz
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchMessages: (channelID, timestamp) =>
       dispatch(fetchMessages(channelID, timestamp)),
-    clearMessages: () => dispatch(clearMessages())
+    clearMessages: () => dispatch(clearMessages()),
+    aziztalks: (msg, channelID) => dispatch(aziztalks(msg, channelID)),
+    deactivateAziz: () => dispatch(deactivateAziz())
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ChannelPage);

@@ -6,3 +6,7 @@ export const SEND_MESSAGE = "SEND_MESSAGE";
 export const ADD_CHANNEL = "ADD_CHANNEL";
 export const FILTER_CHANNELS = "FILTER_CHANNELS";
 export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
+
+//bot
+export const ACTIVATE_AZIZ = "ACTIVATE_AZIZ";
+export const DEACTIVATE_AZIZ = "DEACTIVATE_AZIZ";
