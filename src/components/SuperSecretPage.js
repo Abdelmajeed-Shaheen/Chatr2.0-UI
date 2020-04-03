@@ -3,10 +3,10 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Clock from "./Clock";
 import Notes from "./Notes";
+import HelpBot from "./HelpBot";
 
 const SuperSecretPage = ({ user }) => {
   if (!user) return <Redirect to="/login" />;
-
   return (
     <div className="bg text-center ">
       <div
@@ -36,6 +36,7 @@ const SuperSecretPage = ({ user }) => {
           </div>
         </div>
       </div>
+      <HelpBot />
     </div>
   );
 };

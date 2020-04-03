@@ -24,9 +24,12 @@ class SearchBar extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  botlink: state.botState.channellink
+});
 const mapDispatchToProps = dispatch => {
   return {
     filterChannels: query => dispatch(filterChannels(query))
   };
 };
-export default connect(null, mapDispatchToProps)(SearchBar);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
