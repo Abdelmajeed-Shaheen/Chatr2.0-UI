@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Message from "./Message";
-import HelpBot from "./HelpBot";
 import { sendMessage } from "../redux/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "emoji-mart/css/emoji-mart.css";
