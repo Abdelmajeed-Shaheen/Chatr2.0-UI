@@ -15,7 +15,9 @@ export const azizLogin = () => {
 };
 
 export const azizLogout = () => {
-  delete botinstance.defaults.headers.common.Authorization;
+  return async dispatch => {
+    delete botinstance.defaults.headers.common.Authorization;
+  };
 };
 
 export const activateAziz = () => {
