@@ -1,4 +1,4 @@
-import axios from "axios";
+import {instance} from "./instance";
 import {
   FETCH_CHANNELS,
   ADD_CHANNEL,
@@ -13,7 +13,7 @@ import { setErrors } from "./errors";
 export const fetchAllChannels = () => {
   return async dispatch => {
     try {
-      const res = await axios.get("https://api-chatr.herokuapp.com/channels/");
+      const res = await instance.get("/channels/");
       const channels = res.data;
       dispatch({
         type: FETCH_CHANNELS,
@@ -28,10 +28,7 @@ export const fetchAllChannels = () => {
 export const addChannel = (channel, history) => {
   return async dispatch => {
     try {
-      const res = await axios.post(
-        "https://api-chatr.herokuapp.com/channels/create/",
-        channel
-      );
+      const res = await instance.post("/channels/create/", channel);
       const newChannel = res.data;
 
       dispatch({
@@ -54,8 +51,8 @@ export const addChannel = (channel, history) => {
 export const fetchMessages = (channelID, timestamp) => {
   return async dispatch => {
     try {
-      const res = await axios.get(
-        `https://api-chatr.herokuapp.com/channels/${channelID}/?latest=${timestamp}`
+      const res = await instance.get(
+        `/channels/${channelID}/?latest=${timestamp}`
       );
       const channel = res.data;
       dispatch({
@@ -77,10 +74,7 @@ export const sendMessage = (msg, channelID, user) => {
         timestamp: new Date(),
         channel: channelID
       };
-      const res = await axios.post(
-        `https://api-chatr.herokuapp.com/channels/${channelID}/send/`,
-        message
-      );
+      const res = await instance.post(`/channels/${channelID}/send/`, message);
       dispatch({
         type: SEND_MESSAGE,
         payload: res.data

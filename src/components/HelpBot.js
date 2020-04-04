@@ -3,7 +3,13 @@ import { ThemeProvider } from "styled-components";
 import ChatBot from "react-simple-chatbot";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { activateAziz, deactivateAziz, filterChannels } from "../redux/actions";
+import {
+  activateAziz,
+  deactivateAziz,
+  azizLogin,
+  azizLogout,
+  filterChannels
+} from "../redux/actions";
 const config = {
   width: "300px",
   height: "400px",
@@ -91,6 +97,7 @@ class HelpBot extends Component {
                   value === "start aziz" &&
                   this.props.openedChannel.length > 0
                 ) {
+                  this.props.azizLogin();
                   this.props.activateAziz();
                   return true;
                 }
@@ -126,6 +133,7 @@ class HelpBot extends Component {
               user: true,
               validator: value => {
                 if (value === "stop aziz") {
+                  this.props.azizLogout();
                   this.props.deactivateAziz();
                   return true;
                 }
@@ -169,6 +177,8 @@ const mapDispatchToProps = dispatch => {
   return {
     activateAziz: () => dispatch(activateAziz()),
     deactivateAziz: () => dispatch(deactivateAziz()),
+    azizLogin: () => dispatch(azizLogin()),
+    azizLogout: () => dispatch(azizLogout()),
     filterChannels: query => dispatch(filterChannels(query))
   };
 };

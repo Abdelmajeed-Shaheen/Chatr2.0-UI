@@ -11,4 +11,10 @@ export {
   clearMessages
 } from "./channels";
 
-export { activateAziz, deactivateAziz, aziztalks } from "./bot";
+export {
+  activateAziz,
+  deactivateAziz,
+  aziztalks,
+  azizLogin,
+  azizLogout
+} from "./bot";

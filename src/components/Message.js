@@ -32,8 +32,8 @@ const Message = props => {
             </b>
           </div>
           <div className="card-body">
-            {props.messageObject.message.includes("https://") ||
-            props.messageObject.message.includes("http://") ? (
+            {props.messageObject.message.startsWith("https://") ||
+            props.messageObject.message.startsWith("http://") ? (
               <img
                 src={props.messageObject.message}
                 alt={props.messageObject.message}

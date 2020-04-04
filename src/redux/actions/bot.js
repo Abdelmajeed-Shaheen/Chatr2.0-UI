@@ -1,5 +1,22 @@
 import axios from "axios";
+import { botinstance } from "./instance";
 import { ACTIVATE_AZIZ, DEACTIVATE_AZIZ } from "./actionTypes";
+
+export const azizLogin = () => {
+  const azizData = { username: "azizbot", password: "azizbot1234" };
+  return async dispatch => {
+    try {
+      const res = await botinstance.post("login/", azizData);
+      botinstance.defaults.headers.common.Authorization = `jwt ${res.data.token}`;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const azizLogout = () => {
+  delete botinstance.defaults.headers.common.Authorization;
+};
 
 export const activateAziz = () => {
   return {
@@ -42,8 +59,8 @@ export const aziztalks = (msg, channelID) => {
         timestamp: new Date(),
         channel: channelID
       };
-      const res = await axios.post(
-        `https://api-chatr.herokuapp.com/channels/${channelID}/send/`,
+      const res = await botinstance.post(
+        `/channels/${channelID}/send/`,
         message
       );
       dispatch({

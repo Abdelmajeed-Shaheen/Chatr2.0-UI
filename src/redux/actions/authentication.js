@@ -1,7 +1,6 @@
-import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-import instance from "./instance";
+import { instance } from "./instance";
 import { SET_CURRENT_USER, SET_ERRORS } from "./actionTypes";
 import { fetchAllChannels } from "./channels";
 
@@ -68,12 +67,12 @@ const setCurrentUser = token => {
        * Set headers on the instance and make sure you're using it
        * for all your requests
        */
-      axios.defaults.headers.common.Authorization = `jwt ${token}`;
+      instance.defaults.headers.common.Authorization = `jwt ${token}`;
       user = jwt_decode(token);
       dispatch(fetchAllChannels());
     } else {
       localStorage.removeItem("token");
-      delete axios.defaults.headers.common.Authorization;
+      delete instance.defaults.headers.common.Authorization;
     }
     dispatch({
       type: SET_CURRENT_USER,
