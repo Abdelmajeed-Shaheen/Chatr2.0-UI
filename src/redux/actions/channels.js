@@ -1,4 +1,4 @@
-import {instance} from "./instance";
+import { instance } from "./instance";
 import {
   FETCH_CHANNELS,
   ADD_CHANNEL,

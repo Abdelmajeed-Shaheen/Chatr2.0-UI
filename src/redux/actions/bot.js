@@ -1,4 +1,3 @@
-import axios from "axios";
 import { botinstance } from "./instance";
 import { ACTIVATE_AZIZ, DEACTIVATE_AZIZ } from "./actionTypes";
 
@@ -56,15 +55,11 @@ export const aziztalks = (msg, channelID) => {
   return async dispatch => {
     try {
       const message = {
-        username: "AzizBot",
         message: text,
         timestamp: new Date(),
         channel: channelID
       };
-      const res = await botinstance.post(
-        `/channels/${channelID}/send/`,
-        message
-      );
+      await botinstance.post(`/channels/${channelID}/send/`, message);
       dispatch({
         type: ACTIVATE_AZIZ
       });

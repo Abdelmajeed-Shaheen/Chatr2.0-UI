@@ -8,8 +8,7 @@ import {
   deactivateAziz
 } from "../redux/actions";
 import Chat from "./Chat";
-import HelpBot from "./HelpBot";
-import { azizmsg } from "../aziz";
+
 class ChannelPage extends Component {
   state = {
     updated: true,
@@ -27,16 +26,13 @@ class ChannelPage extends Component {
   setFetchMessagesInterval(channelID) {
     this.props.fetchMessages(channelID, "");
     this.interval = setInterval(() => {
-      if (this.props.match.params.channelID !== undefined) {
+      if (channelID !== undefined) {
         const msg = this.props.openedChannel;
         if (msg.length) {
           const lastmsg = msg[msg.length - 1];
           const timestamp = lastmsg.timestamp;
-          this.props.fetchMessages(
-            this.props.match.params.channelID,
-            timestamp
-          );
-          if (this.props.aziz && !azizmsg.includes(lastmsg.message)) {
+          this.props.fetchMessages(channelID, timestamp);
+          if (this.props.aziz && lastmsg.username !== "azizbot") {
             this.props.aziztalks(
               lastmsg.message,
               this.props.match.params.channelID
@@ -66,8 +62,8 @@ class ChannelPage extends Component {
       this.setState({
         msg: localStorage.getItem(channelID)
       });
-      setTimeout(() => this.setState({ updated: false }), 3000);
-      setTimeout(() => this.scrollToBottom(), 3500);
+      setTimeout(() => this.setState({ updated: false }), 3500);
+      setTimeout(() => this.scrollToBottom(), 3000);
     }
     if (prevProps.openedChannel !== null) {
       if (prevProps.openedChannel.length !== this.props.openedChannel.length) {
@@ -99,7 +95,6 @@ class ChannelPage extends Component {
               updated={this.state.updated}
               msg={this.state.msg}
             />
-            <HelpBot />
           </>
         )}
       </>

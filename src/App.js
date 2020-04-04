@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
 // Scripts
 import main from "./assets/js/main";
@@ -13,6 +14,7 @@ import SuperSecretPage from "./components/SuperSecretPage";
 import LoginForm from "./components/LoginForm";
 import AddChannel from "./components/AddChannel";
 import ChannelPage from "./components/ChannelPage";
+import HelpBot from "./components/HelpBot";
 
 class App extends Component {
   componentDidMount() {
@@ -31,10 +33,16 @@ class App extends Component {
           <Route path="/channels/:name/:channelID" component={ChannelPage} />
           <Redirect to="/welcome" />
         </Switch>
+        {this.props.user && <HelpBot />}
+
         <Footer />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  user: state.userState.user
+});
+
+export default connect(mapStateToProps)(App);
